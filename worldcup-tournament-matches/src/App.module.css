@@ -1,0 +1,103 @@
+/* * {
+  background-color: #D5CDD8;
+} */
+/* #ECE7ED; */
+
+* {
+  box-sizing: border-box;
+}
+
+.gamebackground{
+  background-color: #ECE7ED;
+  height: 150px;
+  display: flex;
+  width: 30%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 3% 2% 3%;
+  min-width: 400px;
+}
+
+.eachgame{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+.all{
+  background-color: #D5CDD8;
+  text-align: center;
+}
+.pagetitle {
+  background-color: #D5CDD8;
+  margin-top: 0px;
+}
+
+.nationflag{
+  height: 35px;
+  width: 50px;
+}
+
+.eachgameitem {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.eachgameitem :nth-child(1) {
+  width: 40%;
+}
+
+
+.eachgameitem :nth-child(3) {
+  width: 40%;
+}
+
+.eachgameitem :nth-child(2) {
+  width: 10%;
+}
+
+.round16 {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 880px;
+  align-content: center;
+}
+
+.round8 {
+  display: flex;
+  height: 60vh;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 880px;
+  align-content: center;
+}
+
+.round4 {
+  display: flex;
+  height: 40vh;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 880px;
+  align-content: center;
+}
+
+.finalround {
+  display: flex;
+  height: 20vh;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 880px;
+  align-content: center;
+}
