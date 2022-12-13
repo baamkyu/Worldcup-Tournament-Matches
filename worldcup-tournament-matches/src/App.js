@@ -22,26 +22,38 @@ import logo from './images/logo.png'
 import styles from './App.module.css'
 import githubicon from './images/githubicon.png'
 
-
+import Icon from 'react-material-symbols/rounded';
 
 
 function Header() {
   return <header>
-    <div class={styles.pagetitle}>
-      <span class={styles.titletext}><img src={logo} alt='' class={styles.logo}></img>카타르 월드컵 토너먼트 시뮬레이션</span>
+    <div className={styles.pagetitle}>
+      <span className={styles.titletext}><img src={logo} alt='' className={styles.logo}></img>카타르 월드컵 토너먼트 시뮬레이션</span>
     </div>
   </header>
 }
 
 function UpToScroll() {
-  console.log('up')
-  return window.scrollTo(0, 0);
+  const MoveToTop = () => {
+    // top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    
+  const MoveToBottom = () => {
+    window.scrollTo({ top: 1000000, behavior: 'smooth'})
+  }
+  return (
+    <div className={styles.arrowiconposition}>
+      <div>
+        <Icon className={styles.arrowicon} icon="arrow_drop_up" onClick={MoveToTop}></Icon>
+      </div>
+      <div>
+        <Icon className={styles.arrowicon} icon="arrow_drop_down" onClick={MoveToBottom}></Icon>
+      </div>
+    </div>
+  )
 }
 
-function DownToScroll() {
-  console.log('down')
-  return window.scrollTo(0, document.body.scrollHeight)
-}
 
 
  function TournamentRound(props) {
@@ -185,24 +197,24 @@ function DownToScroll() {
 
   return (
     <>
-    <div class={styles.gamebackground}>
-    <div class={styles.eachgame}>
+    <div className={styles.gamebackground}>
+    <div className={styles.eachgame}>
         {/* 팀1, 팀2 모두 선택 됐을 때 */}
         {readyToRender === true &&<>
-          <img src={nationalFlagTeam1} alt='' class={styles.nationflag}></img><span class={styles.versustitle}>{team1} VS {team2}</span>  
-          <img src={nationalFlagTeam2} alt='' class={styles.nationflag}></img></>}
+          <img src={nationalFlagTeam1} alt='' className={styles.nationflag}></img><span className={styles.versustitle}>{team1} VS {team2}</span>  
+          <img src={nationalFlagTeam2} alt='' className={styles.nationflag}></img></>}
           
         {readyToRender === false && team1[1] === '강' && team2[1] === '강' && <>
-          <img src={noneselectimg} alt='' class={styles.nationflag}></img><span class={styles.versustitle}>{team1} VS {team2}</span> 
-          <img src={noneselectimg} alt='' class={styles.nationflag}></img></>}
+          <img src={noneselectimg} alt='' className={styles.nationflag}></img><span className={styles.versustitle}>{team1} VS {team2}</span> 
+          <img src={noneselectimg} alt='' className={styles.nationflag}></img></>}
 
         {readyToRender === false && team1[1] !== '강' && team2[1] === '강' && <>
-          <img src={nationalFlagTeam1} alt='' class={styles.nationflag}></img><span class={styles.versustitle}>{team1} VS {team2}</span> 
-          <img src={noneselectimg} alt='' class={styles.nationflag}></img></>}
+          <img src={nationalFlagTeam1} alt='' className={styles.nationflag}></img><span className={styles.versustitle}>{team1} VS {team2}</span> 
+          <img src={noneselectimg} alt='' className={styles.nationflag}></img></>}
 
         {readyToRender === false && team1[1] === '강' && team2[1] !== '강' && <>
-          <img src={noneselectimg} alt='' class={styles.nationflag}></img><span class={styles.versustitle}>{team1} VS {team2}</span> 
-          <img src={nationalFlagTeam2} alt='' class={styles.nationflag}></img></>}
+          <img src={noneselectimg} alt='' className={styles.nationflag}></img><span className={styles.versustitle}>{team1} VS {team2}</span> 
+          <img src={nationalFlagTeam2} alt='' className={styles.nationflag}></img></>}
       </div>
     
     
@@ -210,7 +222,7 @@ function DownToScroll() {
     {/* Team1 경기 스코어 */}
     <div>
       <br></br>
-    <select class={styles.selectbox} onChange={ event => {
+    <select className={styles.selectbox} onChange={ event => {
       event.preventDefault();
       setGameScore(gameScore => {
         let newGameScore = [...gameScore]
@@ -218,7 +230,7 @@ function DownToScroll() {
         return newGameScore
       })
     }}>
-    <option value="" hidden="" disabled="disabled" selected="selected">...</option>
+    <option value="" hidden="" disabled="disabled" selected>...</option>
     <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -231,7 +243,7 @@ function DownToScroll() {
   </select>
 
    {/* Team2 경기 스코어 */}
-   <select class={styles.selectbox} onChange={ event => {
+   <select className={styles.selectbox} onChange={ event => {
      event.preventDefault();
      setGameScore(gameScore => {
        let newGameScore = [...gameScore]
@@ -239,7 +251,7 @@ function DownToScroll() {
        return newGameScore
      })
    }}>
-   <option value="" hidden="" disabled="disabled" selected="selected">...</option>
+   <option value="" hidden="" disabled="disabled" selected>...</option>
    <option value="0">0</option>
    <option value="1">1</option>
    <option value="2">2</option>
@@ -258,7 +270,7 @@ function DownToScroll() {
     <div>승부차기</div>
    {/* Team1 PK 스코어 */}
    <div>
-    <select class={styles.selectbox} onChange={ event => {
+    <select className={styles.selectbox} onChange={ event => {
         event.preventDefault();
         setPkScore(pkScore => {
           let newPkScore = [...pkScore]
@@ -266,7 +278,7 @@ function DownToScroll() {
           return newPkScore
         })
       }}>
-      <option value="" hidden="" disabled="disabled" selected="selected">...</option>
+      <option value="" hidden="" disabled="disabled" selected>...</option>
       <option value="0">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -279,7 +291,7 @@ function DownToScroll() {
     </select>
 
       {/* Team2 PK 스코어 */}
-      <select class={styles.selectbox} onChange={ event => {
+      <select className={styles.selectbox} onChange={ event => {
         event.preventDefault();
         setPkScore(pkScore => {
           let newPkScore = [...pkScore]
@@ -287,7 +299,7 @@ function DownToScroll() {
           return newPkScore
         })
       }}>
-      <option value="" hidden="" disabled="disabled" selected="selected">...</option>
+      <option value="" hidden="" disabled="disabled" selected>...</option>
       <option value="0">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -313,7 +325,7 @@ function DownToScroll() {
     { (result === 'team1' || pkResult === 'team1') && props.round === '4' && <div>{team1} 결승 진출!!</div> }
     { (result === 'team2' || pkResult === 'team2') && props.round === '4' &&<div>{team2} 결승 진출!!</div> }
     <br></br>
-    <button onClick={modeChange} class={styles.resetbutton}>점수 재설정</button>
+    <button onClick={modeChange} className={styles.resetbutton}>점수 재설정</button>
     </>}
   { readyToRender === false && <>진출팀을 결정해주세요.</>}
   </div>
@@ -451,23 +463,31 @@ function DownToScroll() {
 
   return (
     <>
-    <div class={styles.gamebackground}>
-      <div class={styles.eachgame}>
+    <div className={styles.gamebackground}>
+    <div className={styles.eachgame}>
         {/* 팀1, 팀2 모두 선택 됐을 때 */}
         {readyToRender === true &&<>
-          <img src={nationalFlagTeam1} alt='' class={styles.nationflag}></img>{team1} VS {team2}
-          <img src={nationalFlagTeam2} alt='' class={styles.nationflag}></img></>}
+          <img src={nationalFlagTeam1} alt='' className={styles.nationflag}></img><span className={styles.versustitle}>{team1} VS {team2}</span>  
+          <img src={nationalFlagTeam2} alt='' className={styles.nationflag}></img></>}
           
-        {readyToRender === false &&<>
-          <img src={noneselectimg} alt='' class={styles.nationflag}></img>{team1} VS {team2}
-          <img src={noneselectimg} alt='' class={styles.nationflag}></img></>}
+        {readyToRender === false && team1[1] === '승' && team2[1] === '승' && <>
+          <img src={noneselectimg} alt='' className={styles.nationflag}></img><span className={styles.versustitle}>{team1} VS {team2}</span> 
+          <img src={noneselectimg} alt='' className={styles.nationflag}></img></>}
+
+        {readyToRender === false && team1[1] !== '승' && team2[1] === '승' && <>
+          <img src={nationalFlagTeam1} alt='' className={styles.nationflag}></img><span className={styles.versustitle}>{team1} VS {team2}</span> 
+          <img src={noneselectimg} alt='' className={styles.nationflag}></img></>}
+
+        {readyToRender === false && team1[1] === '승' && team2[1] !== '승' && <>
+          <img src={noneselectimg} alt='' className={styles.nationflag}></img><span className={styles.versustitle}>{team1} VS {team2}</span> 
+          <img src={nationalFlagTeam2} alt='' className={styles.nationflag}></img></>}
       </div>
       
     
     {mode === 'select' && readyToRender === true && <>
     {/* Team1 경기 스코어 */}
-    <div class={styles.eachgame}>
-      <select onChange={ event => {
+    <div className={styles.eachgame}>
+      <select className={styles.selectbox} onChange={ event => {
         event.preventDefault();
         setGameScore(gameScore => {
           let newGameScore = [...gameScore]
@@ -475,7 +495,7 @@ function DownToScroll() {
           return newGameScore
         })
       }}>
-      <option value="" hidden="" disabled="disabled" selected="selected">...</option>
+      <option value="" hidden="" disabled="disabled" selected>...</option>
       <option value="0">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -488,7 +508,7 @@ function DownToScroll() {
     </select>
 
       {/* Team2 경기 스코어 */}
-      <select onChange={ event => {
+      <select className={styles.selectbox} onChange={ event => {
         event.preventDefault();
         setGameScore(gameScore => {
           let newGameScore = [...gameScore]
@@ -496,7 +516,7 @@ function DownToScroll() {
           return newGameScore
         })
       }}>
-      <option value="" hidden="" disabled="disabled" selected="selected">...</option>
+      <option value="" hidden="" disabled="disabled" selected>...</option>
       <option value="0">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -514,7 +534,7 @@ function DownToScroll() {
     <div>승부차기</div>
    {/* Team1 PK 스코어 */}
    <div>
-    <select onChange={ event => {
+    <select className={styles.selectbox} onChange={ event => {
         event.preventDefault();
         setPkScore(pkScore => {
           let newPkScore = [...pkScore]
@@ -522,7 +542,7 @@ function DownToScroll() {
           return newPkScore
         })
       }}>
-      <option value="" hidden="" disabled="disabled" selected="selected">...</option>
+      <option value="" hidden="" disabled="disabled" selected>...</option>
       <option value="0">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -535,7 +555,7 @@ function DownToScroll() {
     </select>
 
       {/* Team2 PK 스코어 */}
-      <select onChange={ event => {
+      <select className={styles.selectbox} onChange={ event => {
         event.preventDefault();
         setPkScore(pkScore => {
           let newPkScore = [...pkScore]
@@ -543,7 +563,7 @@ function DownToScroll() {
           return newPkScore
         })
       }}>
-      <option value="" hidden="" disabled="disabled" selected="selected">...</option>
+      <option value="" hidden="" disabled="disabled" selected>...</option>
       <option value="0">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -562,7 +582,7 @@ function DownToScroll() {
     { (result === 'team1' || pkResult === 'team1')  && <div>{team1} 우승!!</div> }
     { (result === 'team2' || pkResult === 'team2')  && <div>{team2} 우승!!</div> }  
     <br></br>
-    <button onClick={modeChange} class={styles.resetbutton}>점수 재설정</button>
+    <button onClick={modeChange} className={styles.resetbutton}>점수 재설정</button>
     </>}
   { readyToRender === false && <>진출팀을 결정해주세요.</> }
   </div>
@@ -575,7 +595,7 @@ function Article() {
   return <article>
     <br></br>
     <a href="https://github.com/baamkyu/Worldcup-Tournament-Matches">
-      <img src={githubicon} alt='' class={styles.githubicon}></img>
+      <img src={githubicon} alt='' className={styles.githubicon}></img>
     </a>
     <br></br>
     made by baamkyu
@@ -681,53 +701,51 @@ function App() {
 
     
     return (
-    <div class={styles.all}>
+    <div className={styles.all}>
       <Header></Header>
       <br></br>
       {/* 16강 Header */}
       <div>
-        <span class={styles.roundtitle}><img src={ball} alt='' class={styles.ballicon}></img> 16강 <img src={ball} alt='' class={styles.ballicon}></img></span>
+        <span className={styles.roundtitle}><img src={ball} alt='' className={styles.ballicon}></img> 16강 <img src={ball} alt='' className={styles.ballicon}></img></span>
       </div>
       <br></br>
       {/* 16강 대진표 */}
-      <div class={styles.round16}>
+      <div className={styles.round16}>
         {Round16}
       </div>
       <br></br>
 
       {/* 8강 Header */}
       <div>
-        <span class={styles.roundtitle}><img src={ball} alt='' class={styles.ballicon}></img> 8강 <img src={ball} alt='' class={styles.ballicon}></img></span>
+        <span className={styles.roundtitle}><img src={ball} alt='' className={styles.ballicon}></img> 8강 <img src={ball} alt='' className={styles.ballicon}></img></span>
       </div>
       <br></br>
        {/* 8강 대진표 */}
-      <div class={styles.round8}>
+      <div className={styles.round8}>
         {Round8}
       </div>
 
       {/* 4강 Header */}
       <div>
-        <span class={styles.roundtitle}><img src={ball} alt='' class={styles.ballicon}></img> 4강 <img src={ball} alt='' class={styles.ballicon}></img></span>
+        <span className={styles.roundtitle}><img src={ball} alt='' className={styles.ballicon}></img> 4강 <img src={ball} alt='' className={styles.ballicon}></img></span>
       </div>
       <br></br>
       {/* 4강 대진표 */}
-      <div class={styles.round4}> 
+      <div className={styles.round4}> 
         {Round4}
       </div>
 
       {/* 결승 Header */}
       <div>
-        <span class={styles.roundtitle}><img src={ball} alt='' class={styles.ballicon}></img> 결승 <img src={ball} alt='' class={styles.ballicon}></img></span>
+        <span className={styles.roundtitle}><img src={ball} alt='' className={styles.ballicon}></img> 결승 <img src={ball} alt='' className={styles.ballicon}></img></span>
       </div>
       <br></br>
       {/* 결승 대진표 */}
-      <div class={styles.finalround}>
+      <div className={styles.finalround}>
         <FinalRound team1={Teams2[0]} team2={Teams2[1]}></FinalRound>
       </div>
       <Article></Article>
-      <button onClick={<UpToScroll></UpToScroll>}>up</button>
-      <DownToScroll></DownToScroll>
-      {/* <button><DownToScroll>down</DownToScroll></button> */}
+      <UpToScroll></UpToScroll>
     </div>
   );
 }
