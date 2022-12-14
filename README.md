@@ -1,4 +1,7 @@
 # 2022 카타르월드컵 토너먼트 대진표
+
+### 서버배포 https://worldcup-tournament-matchtable.netlify.app/
+
 ### 화면 구성
 - 초기 화면
 ![image](https://user-images.githubusercontent.com/109272565/207589879-21feea56-bc24-49b8-8a8c-24c2c3932875.png)
@@ -13,4 +16,3 @@
 - 대한민국 우승 장면(?)
 ![image](https://user-images.githubusercontent.com/109272565/207590839-6b4be60c-9107-4f2b-a1cd-6a933c1dac13.png)
 
-### 서버배포 https://worldcup-tournament-matchtable.netlify.app/
